@@ -5,18 +5,14 @@ var split = require('split');
 
 var count = 1;
 
-// function write(buf) {
-//   if (count%2 != 0) {
-//     count += 1
-//     this.queue(buf.toString().toLowerCase())
-//   } else {
-//     count += 1;
-//     this.queue(buf.toString().toUpperCase())
-//   }
-// }
-
-function write(buf){
-  this.queue(buf);
+function write(buf) {
+  if (count%2 != 0) {
+    count += 1
+    this.queue(buf.toString().toLowerCase()+"\n")
+  } else {
+    count += 1;
+    this.queue(buf.toString().toUpperCase()+"\n")
+  }
 }
 
 var tr = through(write);
